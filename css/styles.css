@@ -1,267 +1,233 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Floating button styles */
-/* 定义卡片内图片的样式 */
-.pintree-card-image {
-  width: 100%;
-  /* 图片宽度为卡片宽度 */
-  height: 150px;
-  /* 设置一个固定高度，或者使用height: auto; */
-  border-radius: 8px 8px 0 0;
-  /* 让图片的顶部边缘圆角 */
-  object-fit: cover;
-  /* 如果图片太大，裁剪图片使其适应容器 */
-  display: block;
-  /* 确保图片是块级元素 */
+#progressContainer {
+  transition: opacity 0.3s ease-in-out;
 }
 
-/* 卡片内容样式 */
-.pintree-card-content {
-  padding: 10px;
-  /* 为内容添加一些内边距 */
-  background-color: white;
-  /* 设置背景颜色，确保内容部分可见 */
-  border-radius: 0 0 8px 8px;
-  /* 底部圆角，与图片圆角相匹配 */
+#progressBar {
+  transition: width 0.5s ease;
 }
-.pintree-floating-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 50px;
-  height: 50px;
-  background-color: #1e90ff;
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  z-index: 1000;
-}
-
-.pintree-floating-button:hover {
-  transform: scale(1.1);
-  background-color: #0077cc;
-}
-
-.pintree-floating-button svg {
-  width: 24px;
-  height: 24px;
-}
-
-/* Custom text and background colors */
-.pintree-text-main-500 {
+.text-main-500{
   --tw-text-opacity: 1;
-  color: rgba(11, 166, 101, var(--tw-text-opacity));
+  color: rgba(11, 166, 101, var(--tw-text-opacity)) 
 }
-
-.pintree-dark {
+.dark{
   --tw-bg-opacity: 1;
   background-color: rgb(17 20 24 / var(--tw-bg-opacity));
 }
+.sidebar-active {
+    --tw-bg-opacity: 0.2;
+    /* background-color: rgba(243, 244, 246, var(--tw-bg-opacity)); bg-gray-100 */
+    background-color: rgba(156, 163, 175, var(--tw-bg-opacity)); /* bg-gray-400 */
+    --tw-text-opacity: 1;
+    color: rgba(11, 166, 101, var(--tw-text-opacity)) /* text-indigo-500 */
 
-.pintree-sidebar-active {
-  --tw-bg-opacity: 0.2;
-  background-color: rgba(156, 163, 175, var(--tw-bg-opacity));
-  --tw-text-opacity: 1;
-  color: rgba(11, 166, 101, var(--tw-text-opacity));
-}
-
-/* No scrollbar style */
-.pintree-no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-.pintree-no-scrollbar {
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  scrollbar-width: none;
-  /* Firefox */
-}
-
-/* Folder card styles */
-.pintree-folder-card {
-  transition: all 0.2s ease-in;
-}
-
-.pintree-folder__svg {
-  width: 100px;
-  height: 80px;
-}
-
-.pintree-folder__back {
-  fill: #0BA665;
-  rx: 10;
-  ry: 10;
-}
-
-.pintree-paper-1 {
-  fill: #e6e6e6;
-  transition: all 0.3s ease-in-out;
-  rx: 10;
-  ry: 10;
-}
-
-.pintree-paper-2 {
-  fill: #e6e6e6;
-  transition: all 0.3s ease-in-out;
-  rx: 10;
-  ry: 10;
-}
-
-.pintree-folder__front {
-  fill: var(--folderColor);
-  rx: 10;
-  ry: 10;
-  transform-origin: bottom;
-  transition: all 0.3s ease-in-out;
-}
-
-.pintree-folder-card:hover {
-  transform: translateY(-5px);
-}
-
-.pintree-folder-card:hover .pintree-paper-1 {
-  y: 12;
-  transform: translateY(0%);
-}
-
-.pintree-folder-card:hover .pintree-paper-2 {
-  y: 22;
-  transform: translateY(0%);
-}
-
-.pintree-folder-card:hover .pintree-folder__front {
-  rx: 13;
-  ry: 13;
-  y: 10;
-  height: 80;
-  transform: skewY(0deg) scaleY(0.6);
-}
-
-.pintree-folder-card:hover .pintree-folder__front.right {
-  rx: 13;
-  ry: 13;
-  y: 0;
-  height: 80;
-  transform: skewY(0deg) scaleY(0.6);
-}
-
-/* Loader styles */
-.pintree-loader {
-  border-top-color: #0BA665;
-  /* Change color as needed */
-  -webkit-animation: pintree-spin 1s linear infinite;
-  animation: pintree-spin 1s linear infinite;
-}
-
-@-webkit-keyframes pintree-spin {
-  0% {
-    -webkit-transform: rotate(0deg);
   }
 
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
-}
+  .sidebar-active-dark {
+    /* --tw-bg-opacity: 1; */
+    /* background-color: rgb(31 41 55 / var(--tw-bg-opacity)); bg-gray-800 */
+    /* --tw-text-opacity: 1; */
+    /* color: rgba(255, 255, 255, var(--tw-text-opacity)) text-white */
 
-@keyframes pintree-spin {
-  0% {
-    transform: rotate(0deg);
   }
 
-  100% {
-    transform: rotate(360deg);
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
   }
-}
 
-/* Card icon background */
-.pintree-card-icon-bg {
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+
+
+  
+  :root {
+    --folderColor: #3CB884;
+    --paperColor: #ffffff;
+  }
+  
+  .folder-card {
+    transition: all 0.2s ease-in;
+  }
+  
+  .folder__svg {
+    width: 100px;
+    height: 80px;
+  }
+  
+  .folder__back {
+    fill: #0BA665;
+    rx: 10;
+    ry: 10;
+  }
+  
+  .paper-1 {
+    fill: #e6e6e6;
+    transition: all 0.3s ease-in-out;
+    rx: 10;
+    ry: 10;
+  }
+
+  .paper-2 {
+    fill: #e6e6e6;
+    transition: all 0.3s ease-in-out;
+    rx: 10;
+    ry: 10;
+  }
+  
+  .paper-1:nth-child(2) {
+    fill: #f2f2f2;
+  }
+  
+  .paper-1:nth-child(3) {
+    fill: #ffffff;
+  }
+
+  .paper-2:nth-child(2) {
+    fill: #f2f2f2;
+  }
+  
+  .paper-2:nth-child(3) {
+    fill: #ffffff;
+  }
+  
+  .folder__front {
+    fill: var(--folderColor);
+    rx: 10;
+    ry: 10;
+    transform-origin: bottom;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .folder-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .folder-card:hover .paper-1 {
+    y: 12;
+    transform: translateY(0%);
+  }
+
+  .folder-card:hover .paper-2 {
+    y: 22;
+    transform: translateY(0%);
+  }
+  
+  .folder-card:hover .folder__front {
+    rx: 13;
+    ry: 13;
+    y: 10; height:80;
+    transform: skewY(0deg) scaleY(0.6);
+  }
+  
+  .folder-card:hover .folder__front.right {
+    rx: 13;
+    ry: 13;
+    y: 0; height:80;
+    transform: skewY(0deg) scaleY(0.6);
+  }
+
+  .loader {
+    border-top-color: #0BA665; /* You can change this color as needed */
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+  }
+
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+.card-icon-bg{
   background-color: rgb(129 132 138 / 10%);
 }
 
-/* Dark mode styles */
-.pintree-dark\:bg-gray-900:is(.dark *) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(17 20 24 / var(--tw-bg-opacity));
-}
 
-.pintree-dark\:bg-gray-800:is(.dark *) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(34 37 42 / var(--tw-bg-opacity));
-}
+  .dark\:pintree-bg-gray-900:is(.dark *) {
+    --tw-bg-opacity: 1;
+    background-color: rgb(17 20 24 / var(--tw-bg-opacity));
+  }
+  .dark\:pintree-bg-gray-800:is(.dark *) {
+    --tw-bg-opacity: 1;
+    background-color: rgb(34 37 42 / var(--tw-bg-opacity));
+  }
+  .dark\:pintree-bg-gray-700:is(.dark *) {
+    --tw-bg-opacity: 1;
+    background-color: rgb(39 42 48 / var(--tw-bg-opacity));
+  }
+  .dark\:pintree-bg-gray-600:is(.dark *) {
+    --tw-bg-opacity: 1;
+    background-color: rgb(45 49 57 / var(--tw-bg-opacity));
+  }
 
-.pintree-dark\:bg-gray-700:is(.dark *) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(39 42 48 / var(--tw-bg-opacity));
-}
 
-.pintree-dark\:bg-gray-600:is(.dark *) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(45 49 57 / var(--tw-bg-opacity));
-}
+  .dark\:hover\:pintree-bg-gray-900:hover:is(.dark *) {
+    --tw-bg-opacity: 1;
+    background-color: rgb(17 20 24 / var(--tw-bg-opacity));
+  }
+  .dark\:hover\:pintree-bg-gray-800:hover:is(.dark *) {
+    --tw-bg-opacity: 1;
+    background-color: rgb(34 37 42 / var(--tw-bg-opacity));
+  }
+  .dark\:hover\:pintree-bg-gray-700:hover:is(.dark *) {
+    --tw-bg-opacity: 1;
+    background-color: rgb(39 42 48 / var(--tw-bg-opacity));
+  }
+  .dark\:hover\:pintree-bg-gray-600:hover:is(.dark *) {
+    --tw-bg-opacity: 1;
+    background-color: rgb(45 49 57 / var(--tw-bg-opacity));
+  }
 
-.pintree-dark\:hover\:bg-gray-900:hover:is(.dark *) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(17 20 24 / var(--tw-bg-opacity));
-}
 
-.pintree-dark\:hover\:bg-gray-800:hover:is(.dark *) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(34 37 42 / var(--tw-bg-opacity));
-}
+  .dark\:pintree-border-gray-900:is(.dark *) {
+    --tw-bg-opacity: 1;
+    border-color: rgb(17 20 24 / var(--tw-bg-opacity));
+  }
+  .dark\:pintree-border-gray-800:is(.dark *) {
+    --tw-bg-opacity: 1;
+    border-color: rgb(34 37 42 / var(--tw-bg-opacity));
+  }
+  .dark\:pintree-border-gray-700:is(.dark *) {
+    --tw-bg-opacity: 1;
+    border-color: rgb(39 42 48 / var(--tw-bg-opacity));
+  }
+  .dark\:pintree-border-gray-600:is(.dark *) {
+    --tw-bg-opacity: 1;
+    border-color: rgb(45 49 57 / var(--tw-bg-opacity));
+  }
 
-.pintree-dark\:hover\:bg-gray-700:hover:is(.dark *) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(39 42 48 / var(--tw-bg-opacity));
-}
 
-.pintree-dark\:hover\:bg-gray-600:hover:is(.dark *) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(45 49 57 / var(--tw-bg-opacity));
-}
+  .dark\:pintree-ring-gray-900:is(.dark *) {
+    --tw-bg-opacity: 1;
+    --tw-ring-color: rgb(17 20 24 / var(--tw-bg-opacity));
+  }
+  .dark\:pintree-ring-gray-800:is(.dark *) {
+    --tw-bg-opacity: 1;
+    --tw-ring-color: rgb(34 37 42 / var(--tw-bg-opacity));
+  }
+  .dark\:pintree-ring-gray-700:is(.dark *) {
+    --tw-bg-opacity: 1;
+    --tw-ring-color: rgb(39 42 48 / var(--tw-bg-opacity));
+  }
+  .dark\:pintree-ring-gray-600:is(.dark *) {
+    --tw-bg-opacity: 1;
+    --tw-ring-color: rgb(45 49 57 / var(--tw-bg-opacity));
+  }
 
-.pintree-dark\:border-gray-900:is(.dark *) {
-  --tw-bg-opacity: 1;
-  border-color: rgb(17 20 24 / var(--tw-bg-opacity));
-}
-
-.pintree-dark\:border-gray-800:is(.dark *) {
-  --tw-bg-opacity: 1;
-  border-color: rgb(34 37 42 / var(--tw-bg-opacity));
-}
-
-.pintree-dark\:border-gray-700:is(.dark *) {
-  --tw-bg-opacity: 1;
-  border-color: rgb(39 42 48 / var(--tw-bg-opacity));
-}
-
-.pintree-dark\:border-gray-600:is(.dark *) {
-  --tw-bg-opacity: 1;
-  border-color: rgb(45 49 57 / var(--tw-bg-opacity));
-}
-
-.pintree-dark\:ring-gray-900:is(.dark *) {
-  --tw-bg-opacity: 1;
-  --tw-ring-color: rgb(17 20 24 / var(--tw-bg-opacity));
-}
-
-.pintree-dark\:ring-gray-800:is(.dark *) {
-  --tw-bg-opacity: 1;
-  --tw-ring-color: rgb(34 37 42 / var(--tw-bg-opacity));
-}
-
-.pintree-dark\:ring-gray-700:is(.dark *) {
-  --tw-bg-opacity: 1;
-  --tw-ring-color: rgb(39 42 48 / var(--tw-bg-opacity));
-}
-
-.pintree-dark\:ring-gray-600:is(.dark *) {
-  --tw-bg-opacity: 1;
-  --tw-ring-color: rgb(45 49 57 / var(--tw-bg-opacity));
-}

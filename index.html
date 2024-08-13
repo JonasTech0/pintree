@@ -98,23 +98,6 @@
               <a href="" class="ml-4 font-extrabold text-2xl dark:text-white">书签管理</a>
             </div>
             <div id="sidebar-2" class="flex flex-1 flex-col">
-              <!-- Floating Button -->
-              <!-- 卡片结构 -->
-              <div class="pintree-folder-card">
-                <!-- 添加图片 -->
-                <img src="/assets/logo.webp" alt="卡片图片" class="pintree-card-image">
-
-                <!-- 卡片内容 -->
-                <div class="pintree-card-content">
-                  <h2 class="text-xs font-normal text-center w-full truncate dark:text-gray-400">卡片标题</h2>
-                  <p class="text-xs text-center text-gray-400 dark:text-gray-600">卡片描述或其他信息</p>
-                </div>
-              </div>
-
-              <!-- Target Section -->
-              <div id="target-section">
-                <!-- Your content here -->
-              </div>
               <!-- Sidebar content will be injected here -->
             </div>
           </div>
@@ -163,7 +146,9 @@
             </div>
           </div>
           <a href="" class="lg:hidden ml-4 font-extrabold text-2xl dark:text-white">Pintree</a>
-          <div class="relative">
+
+          <div class="relative flex space-x-4">
+            <!-- 现有的主题切换按钮 -->
             <button id="themeToggleButton" type="button" aria-label="Switch theme"
               class="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:pintree-bg-gray-900 dark:ring-white/10 dark:hover:ring-white/20">
               <svg id="sunIcon" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
@@ -183,7 +168,29 @@
                   stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
             </button>
+
+            <!-- 新的跳转按钮 -->
+            <button id="newButton" type="button" aria-label="Redirect button"
+              class="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:pintree-bg-gray-900 dark:ring-white/10 dark:hover:ring-white/20">
+              <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true"
+                class="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden [@media(prefers-color-scheme:dark)]:fill-teal-50 [@media(prefers-color-scheme:dark)]:stroke-teal-500 [@media(prefers-color-scheme:dark)]:group-hover:fill-teal-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-teal-600">
+                <path d="M12 2a10 10 0 110 20 10 10 0 010-20z">
+                </path>
+              </svg>
+            </button>
           </div>
+
+
+          <div id="progressContainer" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50">
+            <div class="w-1/2 bg-white rounded-lg p-4">
+                <div class="h-4 bg-gray-300 rounded">
+                    <div id="progressBar" class="h-full bg-green-500 rounded" style="width: 0%;"></div>
+                </div>
+                <p id="progressText" class="text-center mt-2">正在加载...</p>
+            </div>
+        </div>
+
         </div>
       </div>
 
@@ -413,6 +420,34 @@
       return card;
     }
 
+    
+    document.getElementById('newButton').addEventListener('click', function() {
+    // 显示进度条容器
+    const progressContainer = document.getElementById('progressContainer');
+    const progressBar = document.getElementById('progressBar');
+    const progressText = document.getElementById('progressText');
+    progressContainer.classList.remove('hidden');
+
+    let progress = 0;
+
+    // 模拟加载进度
+    const interval = setInterval(function() {
+        progress += 10;
+        progressBar.style.width = progress + '%';
+        progressText.textContent = `加载进度: ${progress}%`;
+
+        // 如果进度达到100%，停止加载并跳转
+        if (progress >= 100) {
+            clearInterval(interval);
+            progressText.textContent = '跳转中...';
+            setTimeout(function() {
+                window.location.href = 'https://zeabur.com/templates/OLLSQN'; // 替换为目标网址
+            }, 500); // 可根据需要调整延迟
+        }
+    }, 300); // 每300毫秒更新一次进度，可调整速度
+});
+
+   
     // Render sidebar navigation
     function renderNavigation(folders, container, isFirstRender = false, path = []) {
       container.innerHTML = ''; // Clear previous content
@@ -733,17 +768,7 @@
     });
 
   </script>
-  <script>
-    document.getElementById('floating-button').addEventListener('click', function (event) {
-      event.preventDefault();
-      const targetSection = document.querySelector(this.getAttribute('href'));
 
-      window.scrollTo({
-        top: targetSection.offsetTop,
-        behavior: 'smooth'
-      });
-    });
-  </script>
   <script>
     document.addEventListener('DOMContentLoaded', (event) => {
       const yearElement = document.getElementById('currentYear');
