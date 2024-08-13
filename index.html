@@ -98,6 +98,23 @@
               <a href="" class="ml-4 font-extrabold text-2xl dark:text-white">书签管理</a>
             </div>
             <div id="sidebar-2" class="flex flex-1 flex-col">
+              <!-- Floating Button -->
+              <!-- 卡片结构 -->
+              <div class="pintree-folder-card">
+                <!-- 添加图片 -->
+                <img src="assets/logo.webp" alt="卡片图片" class="pintree-card-image">
+
+                <!-- 卡片内容 -->
+                <div class="pintree-card-content">
+                  <h2 class="text-xs font-normal text-center w-full truncate dark:text-gray-400">卡片标题</h2>
+                  <p class="text-xs text-center text-gray-400 dark:text-gray-600">卡片描述或其他信息</p>
+                </div>
+              </div>
+
+              <!-- Target Section -->
+              <div id="target-section">
+                <!-- Your content here -->
+              </div>
               <!-- Sidebar content will be injected here -->
             </div>
           </div>
@@ -716,7 +733,17 @@
     });
 
   </script>
+  <script>
+    document.getElementById('floating-button').addEventListener('click', function (event) {
+      event.preventDefault();
+      const targetSection = document.querySelector(this.getAttribute('href'));
 
+      window.scrollTo({
+        top: targetSection.offsetTop,
+        behavior: 'smooth'
+      });
+    });
+  </script>
   <script>
     document.addEventListener('DOMContentLoaded', (event) => {
       const yearElement = document.getElementById('currentYear');
